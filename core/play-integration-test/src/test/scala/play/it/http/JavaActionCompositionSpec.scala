@@ -114,7 +114,7 @@ class BuiltInComponentsJavaActionCompositionSpec extends JavaActionCompositionSp
         configuration
           .get[Option[String]]("play.http.actionCreator")
           .map(Class.forName)
-          .map(c => c.newInstance().asInstanceOf[ActionCreator])
+          .map(c => c.getDeclaredConstructor().newInstance().asInstanceOf[ActionCreator])
           .getOrElse(new DefaultActionCreator)
       }
     }

@@ -296,7 +296,7 @@ object PlayDocsPlugin extends AutoPlugin with PlayDocsPluginCompat {
         buildDocHandler,
         translationReport,
         forceTranslationReport,
-        new java.lang.Integer(port)
+        java.lang.Integer.valueOf(port)
       )
       .asInstanceOf[ReloadableServer]
 
