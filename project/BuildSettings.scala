@@ -253,7 +253,10 @@ object BuildSettings {
       ProblemFilters.exclude[ReversedMissingMethodProblem]("play.api.inject.QualifierAnnotation.asJava"),
       // Fix compile error on JDK15: Use direct AlgorithmId.get() (is private[play] anyway)
       ProblemFilters
-        .exclude[IncompatibleMethTypeProblem]("play.core.server.ssl.CertificateGenerator.generateCertificate")
+        .exclude[IncompatibleMethTypeProblem]("play.core.server.ssl.CertificateGenerator.generateCertificate"),
+      // Removing NoMaterializer
+      ProblemFilters.exclude[MissingClassProblem]("play.api.test.NoMaterializer$"),
+      ProblemFilters.exclude[MissingClassProblem]("play.api.test.NoMaterializer"),
     ),
     unmanagedSourceDirectories in Compile += {
       (sourceDirectory in Compile).value / s"scala-${scalaBinaryVersion.value}"
