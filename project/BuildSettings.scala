@@ -253,7 +253,10 @@ object BuildSettings {
       // Add play.api.inject.BindingTarget asJava method
       ProblemFilters.exclude[ReversedMissingMethodProblem]("play.api.inject.BindingTarget.asJava"),
       // Add play.api.inject.QualifierAnnotation asJava method
-      ProblemFilters.exclude[ReversedMissingMethodProblem]("play.api.inject.QualifierAnnotation.asJava")
+      ProblemFilters.exclude[ReversedMissingMethodProblem]("play.api.inject.QualifierAnnotation.asJava"),
+      // Fix compile error on JDK15: Use direct AlgorithmId.get() (is private[play] anyway)
+      ProblemFilters
+        .exclude[IncompatibleMethTypeProblem]("play.core.server.ssl.CertificateGenerator.generateCertificate")
     ),
     unmanagedSourceDirectories in Compile += {
       (sourceDirectory in Compile).value / s"scala-${scalaBinaryVersion.value}"
