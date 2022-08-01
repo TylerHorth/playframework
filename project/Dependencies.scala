@@ -7,9 +7,9 @@ import Keys._
 import buildinfo.BuildInfo
 
 object Dependencies {
+  val akkaVersion: String     = sys.props.getOrElse("akka.version", "2.5.31")
+  val akkaHttpVersion: String = sys.props.getOrElse("akka.http.version", "10.1.12")
 
-  val akkaVersion: String = sys.props.getOrElse("akka.version", "2.5.26")
-  val akkaHttpVersion     = "10.0.15"
   val playJsonVersion     = "2.6.14"
 
   val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
@@ -123,7 +123,7 @@ object Dependencies {
     logback
   ).map(_ % Test)
 
-  val guiceVersion = "4.1.0"
+  val guiceVersion = "4.2.2"
   val guiceDeps = Seq(
     "com.google.inject"            % "guice"                % guiceVersion,
     "com.google.inject.extensions" % "guice-assistedinject" % guiceVersion
