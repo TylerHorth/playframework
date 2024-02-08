@@ -15,11 +15,9 @@ import de.heikoseeberger.sbtheader.FileType
 import de.heikoseeberger.sbtheader.CommentStyle
 import de.heikoseeberger.sbtheader.HeaderPlugin.autoImport._
 
-import bintray.BintrayPlugin.autoImport._
 import interplay._
 import interplay.Omnidoc.autoImport._
 import interplay.PlayBuildBase.autoImport._
-import sbtwhitesource.WhiteSourcePlugin.autoImport._
 
 import scala.sys.process.stringToProcess
 import scala.util.control.NonFatal
@@ -97,7 +95,6 @@ object BuildSettings {
     testListeners in (Test, test) := Nil,
     javaOptions in Test ++= Seq("-XX:MaxMetaspaceSize=384m", "-Xmx512m", "-Xms128m"),
     testOptions += Tests.Argument(TestFrameworks.JUnit, "-v"),
-    bintrayPackage := "play-sbt-plugin",
     apiURL := {
       val v = version.value
       if (isSnapshot.value) {

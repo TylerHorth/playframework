@@ -418,7 +418,6 @@ lazy val publishedProjects = Seq[ProjectReference](
 
 lazy val PlayFramework = Project("Play-Framework", file("."))
   .enablePlugins(PlayRootProject)
-  .enablePlugins(PlayWhitesourcePlugin)
   .settings(
     playCommonSettings,
     scalaVersion := (scalaVersion in PlayProject).value,
