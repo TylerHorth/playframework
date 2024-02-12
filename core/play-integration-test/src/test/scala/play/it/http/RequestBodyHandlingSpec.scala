@@ -77,7 +77,7 @@ trait RequestBodyHandlingSpec extends PlaySpecification with ServerIntegrationSp
 
       val client = new BasicHttpClient(port, false)
       val response = client.sendRaw(
-        output,
+        output.take(compressedDataLength),
         Map(
           "Content-Type"     -> "text/plain",
           "Content-Length"   -> compressedDataLength.toString,
