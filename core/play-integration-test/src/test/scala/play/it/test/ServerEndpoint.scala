@@ -12,7 +12,7 @@ import play.api.Application
 import play.api.Mode
 import play.core.ApplicationProvider
 import play.core.server.ServerConfig
-import play.core.server.ssl.FakeKeyStore
+import com.typesafe.sslconfig.ssl.FakeKeyStore
 import play.it.test.HttpsEndpoint.ServerSSL
 import play.server.api.SSLEngineProvider
 

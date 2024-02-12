@@ -4,6 +4,8 @@
 
 package play.core.server.ssl
 
+import com.typesafe.sslconfig.{ ssl => sslconfig }
+import com.typesafe.sslconfig.util.NoopLogger
 import play.core.server.ServerConfig
 import play.server.api.SSLEngineProvider
 import play.core.ApplicationProvider
@@ -65,6 +67,7 @@ class DefaultSSLEngineProvider(serverConfig: ServerConfig, appProvider: Applicat
     } else {
       // Load a generated key store
       logger.warn("Using generated key with self signed certificate for HTTPS. This should not be used in production.")
+      val FakeKeyStore = new sslconfig.FakeKeyStore(NoopLogger.factory())
       FakeKeyStore.keyManagerFactory(serverConfig.rootDir)
     }
 

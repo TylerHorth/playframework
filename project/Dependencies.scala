@@ -10,6 +10,8 @@ object Dependencies {
   val akkaVersion: String     = sys.props.getOrElse("akka.version", "2.5.31")
   val akkaHttpVersion: String = sys.props.getOrElse("akka.http.version", "10.1.12")
 
+  val sslConfig = "com.typesafe" %% "ssl-config-core" % "0.4.3"
+
   val playJsonVersion     = "2.6.14"
 
   val logback = "ch.qos.logback" % "logback-classic" % "1.2.3"
@@ -144,7 +146,8 @@ object Dependencies {
         "javax.transaction"  % "jta"           % "1.1",
         "javax.inject"       % "javax.inject"  % "1",
         "org.scala-lang"     % "scala-reflect" % scalaVersion,
-        scalaJava8Compat
+        scalaJava8Compat,
+        sslConfig
       ) ++ scalaParserCombinators(scalaVersion) ++
       specsBuild.map(_ % Test) ++
       javaTestDeps
