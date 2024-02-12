@@ -53,8 +53,9 @@ trait IdleTimeoutSpec extends PlaySpecification with ServerIntegrationSpecificat
       val port         = testServerPort
       val props        = new Properties(System.getProperties)
       val serverConfig = ServerConfig(port = Some(port), sslPort = httpsPort, mode = Mode.Test, properties = props)
+      val config = extraConfig + ("play.server.akka.http2.enabled" -> "false")
 
-      val configuration = Configuration.load(play.api.Environment.simple(), extraConfig)
+      val configuration = Configuration.load(play.api.Environment.simple(), config)
 
       running(
         play.api.test.TestServer(
